@@ -11,30 +11,45 @@ using System.Windows.Forms;
 namespace SimpleComputer
 {
     public partial class Form1 : Form
-    {
-        String[] array2 =new String[100];
+    {        
+        MySimpleComputer myComp = new MySimpleComputer(100);
         public Form1()
         {
+                      
             for (int i = 0; i < 100; i++)
             {
-                array2[i] = "+9999";
+                myComp.memory.sc_memorySet(i, 0x1f1F1f);
             }
             InitializeComponent();
+            updateGUI();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            dataGridView1.RowCount = array2.Length/10;
-            dataGridView1.ColumnCount = array2.Length / 10;
-            for (int i = 0; i < array2.Length / 10; i++)
-                for (int j = 0; j < array2.Length / 10; j++)
-                    dataGridView1.Rows[i].Cells[j].Value = array2[i*10 + j];
+            updateGUI();
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            array2[e.RowIndex * 10 + e.ColumnIndex] = dataGridView1.CurrentCell.Value.ToString();
+            int temp =Convert.ToInt32( dataGridView1.CurrentCell.Value.ToString());
+            myComp.memory.sc_memorySet(e.RowIndex * 10 + e.ColumnIndex, temp);
+        }
+
+        public void updateGUI()
+        {
+            dataGridView1.RowCount = myComp.MemSize / 10;
+            dataGridView1.ColumnCount = myComp.MemSize / 10;  
+            int temp = 0;
+            for (int i = 0; i < myComp.MemSize / 10; i++)
+            {
+                for (int j = 0; j < myComp.MemSize / 10; j++)
+                {
+                    if (myComp.memory.sc_memoryGet(i * 10 + j, ref temp) == 0)
+                    {
+                        dataGridView1.Rows[i].Cells[j].Value ="+"+ temp.ToString("X4");
+                    }
+                }
+            }
         }
 
         
