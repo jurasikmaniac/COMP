@@ -31,8 +31,21 @@ namespace SimpleComputer
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            int temp =Convert.ToInt32( dataGridView1.CurrentCell.Value.ToString());
+            int temp=0;
+            try
+            {
+                temp = Int32.Parse(dataGridView1.CurrentCell.Value.ToString(), System.Globalization.NumberStyles.HexNumber);
+            }
+            catch (FormatException )
+            {
+                string message = "Wrong format";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);                
+            }
             myComp.memory.sc_memorySet(e.RowIndex * 10 + e.ColumnIndex, temp);
+            updateGUI();
         }
 
         public void updateGUI()
@@ -46,11 +59,49 @@ namespace SimpleComputer
                 {
                     if (myComp.memory.sc_memoryGet(i * 10 + j, ref temp) == 0)
                     {
-                        dataGridView1.Rows[i].Cells[j].Value ="+"+ temp.ToString("X4");
+                        if (!GetBit( ref temp,15))
+                        {
+                            dataGridView1.Rows[i].Cells[j].Value ="+" + temp.ToString("X4");    
+                        }
+                        else
+                        {
+                            dataGridView1.Rows[i].Cells[j].Value = "-" + temp.ToString("X4");    
+                        }
+                        
                     }
                 }
             }
         }
+
+        public void SetBit(ref int dw, int nBitNumber, int nBitValue)
+        {
+             //dw - целое, в котором задаем бит
+             //nBitNumber - номер бита, который задаем (0..31)
+             int dwMask = 1 << nBitNumber;// 0000100000....
+     
+             //nBitValue (0|1)
+             if(nBitValue == 0)
+             {//задаем 0
+                   dwMask = ~dwMask;// 1111011111....
+                   dw = dw & dwMask; // 0 & x = 0
+             }
+             else
+             {//задаем 1
+                   dw = dw | dwMask;// 1 | x = 1
+             }
+        }
+
+        public bool GetBit(ref int dw, int nBitNumber)
+        {
+             //dw - целое в котором узнаем бит
+             //nBitNumber - номер бита, который узнаем (0..31)
+             int dwMask = 1 << nBitNumber;// 0000100000....
+             
+             if(Convert.ToBoolean(dwMask & dw))
+                   return true;
+             return false;
+        }
+
 
         
 

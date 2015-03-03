@@ -7,3 +7,12 @@ D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.Properties.R
 D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.csproj.GenerateResource.Cache
 D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.exe
 D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.pdb
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\bin\Debug\SimpleComputer.exe.config
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.exe
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.pdb
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\bin\Debug\SimpleComputer.exe
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\bin\Debug\SimpleComputer.pdb
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.csprojResolveAssemblyReference.cache
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.Form1.resources
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.Properties.Resources.resources
+d:\GITREPS\COMP\SimpleComputer\SimpleComputer\obj\Debug\SimpleComputer.csproj.GenerateResource.Cache
