@@ -33,7 +33,7 @@ namespace SimpleComputer
             {
                 return -1; //выход за границы
             }
-            arrMem[address] = value&0xFFFF;
+            arrMem[address] = value & 0xFFFF;
             return 0;
         }
 
