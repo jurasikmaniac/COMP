@@ -33,31 +33,31 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxAcc = new System.Windows.Forms.GroupBox();
+            this.textBoxAcc = new System.Windows.Forms.TextBox();
             this.groupBoxInstr = new System.Windows.Forms.GroupBox();
+            this.textBoxInstr = new System.Windows.Forms.TextBox();
             this.groupBoxOp = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelOpVal = new System.Windows.Forms.Label();
             this.labelOp = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelFWrongOp = new System.Windows.Forms.Label();
             this.labelFDivZero = new System.Windows.Forms.Label();
+            this.labelFIgnorTimer = new System.Windows.Forms.Label();
             this.labelFOverFlow = new System.Windows.Forms.Label();
             this.labelFOutMemory = new System.Windows.Forms.Label();
-            this.labelFIgnorTimer = new System.Windows.Forms.Label();
-            this.labelFWrongOp = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBoxAcc = new System.Windows.Forms.TextBox();
-            this.textBoxInstr = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBoxMem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxAcc.SuspendLayout();
@@ -94,6 +94,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(538, 218);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
             // button1
@@ -117,6 +118,17 @@
             this.groupBoxAcc.TabStop = false;
             this.groupBoxAcc.Text = "acumulator";
             // 
+            // textBoxAcc
+            // 
+            this.textBoxAcc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxAcc.Location = new System.Drawing.Point(7, 26);
+            this.textBoxAcc.Name = "textBoxAcc";
+            this.textBoxAcc.Size = new System.Drawing.Size(187, 20);
+            this.textBoxAcc.TabIndex = 0;
+            this.textBoxAcc.Text = "+9999";
+            this.textBoxAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBoxInstr
             // 
             this.groupBoxInstr.Controls.Add(this.textBoxInstr);
@@ -127,6 +139,17 @@
             this.groupBoxInstr.TabIndex = 3;
             this.groupBoxInstr.TabStop = false;
             this.groupBoxInstr.Text = "instructionCounter";
+            // 
+            // textBoxInstr
+            // 
+            this.textBoxInstr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxInstr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxInstr.Location = new System.Drawing.Point(7, 22);
+            this.textBoxInstr.Name = "textBoxInstr";
+            this.textBoxInstr.Size = new System.Drawing.Size(187, 20);
+            this.textBoxInstr.TabIndex = 0;
+            this.textBoxInstr.Text = "+9999";
+            this.textBoxInstr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBoxOp
             // 
@@ -183,6 +206,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Flags";
             // 
+            // labelFWrongOp
+            // 
+            this.labelFWrongOp.AutoSize = true;
+            this.labelFWrongOp.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelFWrongOp.Location = new System.Drawing.Point(109, 22);
+            this.labelFWrongOp.Name = "labelFWrongOp";
+            this.labelFWrongOp.Size = new System.Drawing.Size(20, 20);
+            this.labelFWrongOp.TabIndex = 7;
+            this.labelFWrongOp.Text = "Е";
+            // 
             // labelFDivZero
             // 
             this.labelFDivZero.AutoSize = true;
@@ -192,6 +225,16 @@
             this.labelFDivZero.Size = new System.Drawing.Size(18, 20);
             this.labelFDivZero.TabIndex = 1;
             this.labelFDivZero.Text = "0";
+            // 
+            // labelFIgnorTimer
+            // 
+            this.labelFIgnorTimer.AutoSize = true;
+            this.labelFIgnorTimer.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelFIgnorTimer.Location = new System.Drawing.Point(85, 22);
+            this.labelFIgnorTimer.Name = "labelFIgnorTimer";
+            this.labelFIgnorTimer.Size = new System.Drawing.Size(18, 20);
+            this.labelFIgnorTimer.TabIndex = 6;
+            this.labelFIgnorTimer.Text = "Т";
             // 
             // labelFOverFlow
             // 
@@ -212,26 +255,6 @@
             this.labelFOutMemory.Size = new System.Drawing.Size(22, 20);
             this.labelFOutMemory.TabIndex = 5;
             this.labelFOutMemory.Text = "М";
-            // 
-            // labelFIgnorTimer
-            // 
-            this.labelFIgnorTimer.AutoSize = true;
-            this.labelFIgnorTimer.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.labelFIgnorTimer.Location = new System.Drawing.Point(85, 22);
-            this.labelFIgnorTimer.Name = "labelFIgnorTimer";
-            this.labelFIgnorTimer.Size = new System.Drawing.Size(18, 20);
-            this.labelFIgnorTimer.TabIndex = 6;
-            this.labelFIgnorTimer.Text = "Т";
-            // 
-            // labelFWrongOp
-            // 
-            this.labelFWrongOp.AutoSize = true;
-            this.labelFWrongOp.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.labelFWrongOp.Location = new System.Drawing.Point(109, 22);
-            this.labelFWrongOp.Name = "labelFWrongOp";
-            this.labelFWrongOp.Size = new System.Drawing.Size(20, 20);
-            this.labelFWrongOp.TabIndex = 7;
-            this.labelFWrongOp.Text = "Е";
             // 
             // label7
             // 
@@ -263,49 +286,55 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "acumulator";
             // 
-            // button2
+            // label6
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(7, 26);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Load";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(88, 142);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "reset computer";
             // 
-            // button3
+            // label5
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(7, 55);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Save";
-            this.button3.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(88, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "exec step";
             // 
-            // button4
+            // label4
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(7, 84);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Run";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(88, 84);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "run computer";
             // 
-            // button5
+            // label3
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(7, 113);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Step";
-            this.button5.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(88, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "save memory";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(88, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "load memory";
             // 
             // button6
             // 
@@ -318,77 +347,49 @@
             this.button6.Text = "Reset";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // textBoxAcc
+            // button5
             // 
-            this.textBoxAcc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxAcc.Location = new System.Drawing.Point(7, 26);
-            this.textBoxAcc.Name = "textBoxAcc";
-            this.textBoxAcc.Size = new System.Drawing.Size(187, 20);
-            this.textBoxAcc.TabIndex = 0;
-            this.textBoxAcc.Text = "+9999";
-            this.textBoxAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(7, 113);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Step";
+            this.button5.UseVisualStyleBackColor = true;
             // 
-            // textBoxInstr
+            // button4
             // 
-            this.textBoxInstr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxInstr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxInstr.Location = new System.Drawing.Point(7, 22);
-            this.textBoxInstr.Name = "textBoxInstr";
-            this.textBoxInstr.Size = new System.Drawing.Size(187, 20);
-            this.textBoxInstr.TabIndex = 0;
-            this.textBoxInstr.Text = "+9999";
-            this.textBoxInstr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(7, 84);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Run";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // button3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(88, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "save memory";
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(7, 55);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Save";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // button2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(88, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "run computer";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(88, 113);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "exec step";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(88, 142);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "reset computer";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(88, 26);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "load memory";
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(7, 26);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Load";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

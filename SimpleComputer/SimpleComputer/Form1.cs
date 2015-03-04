@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,10 @@ namespace SimpleComputer
         MySimpleComputer myComp = new MySimpleComputer(100);
         public Form1()
         {
-                      
+            
             for (int i = 0; i < 100; i++)
-            {
-                myComp.memory.sc_memorySet(i, 0x1f1F1f);
+            {            
+                myComp.memory.sc_memorySet(i, 0x1F1F);
             }
             InitializeComponent();
             updateGUI();
@@ -32,19 +33,36 @@ namespace SimpleComputer
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             int temp=0;
+            bool positiv = true;
+            string cell = dataGridView1.CurrentCell.Value.ToString();
+            int Index = cell.LastIndexOf('+');
+            if (Index >= 0)
+            {
+                positiv = true;
+            }
+            Index = cell.LastIndexOf('-');
+            if (Index >= 0)
+            {
+                positiv = false;
+            }
+            cell=cell.Trim(new Char[] { '+', '-'} );
+
             try
             {
-                temp = Int32.Parse(dataGridView1.CurrentCell.Value.ToString(), System.Globalization.NumberStyles.HexNumber);
+                temp = Int32.Parse(cell, System.Globalization.NumberStyles.HexNumber);
             }
-            catch (FormatException )
+            catch ( Exception )
             {
-                string message = "Wrong format";
+                string message = "Wrong format(e.g. -/+####)";
                 string caption = "Error Detected in Input";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);                
             }
-            myComp.memory.sc_memorySet(e.RowIndex * 10 + e.ColumnIndex, temp);
+            int com = (temp&0x7F00)>>1;
+            int op = temp & 0x7F;
+            temp = com | op;
+            myComp.memory.sc_memorySet(e.RowIndex * 10 + e.ColumnIndex,positiv ? temp:temp|0x4000);
             updateGUI();
         }
 
@@ -59,13 +77,16 @@ namespace SimpleComputer
                 {
                     if (myComp.memory.sc_memoryGet(i * 10 + j, ref temp) == 0)
                     {
-                        if (!GetBit( ref temp,15))
+                        int com = (temp >> 7) & 0x7F;
+                        int op = temp & 0x7F;
+                        if (!GetBit( ref temp,14))
                         {
-                            dataGridView1.Rows[i].Cells[j].Value ="+" + temp.ToString("X4");    
+
+                            dataGridView1.Rows[i].Cells[j].Value = "+" + com.ToString("X2") + op.ToString("X2");    
                         }
                         else
                         {
-                            dataGridView1.Rows[i].Cells[j].Value = "-" + temp.ToString("X4");    
+                            dataGridView1.Rows[i].Cells[j].Value = "-" + com.ToString("X2") + op.ToString("X2");    
                         }
                         
                     }
@@ -100,6 +121,11 @@ namespace SimpleComputer
              if(Convert.ToBoolean(dwMask & dw))
                    return true;
              return false;
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            dataGridView1.CurrentCell.Value="";
         }
 
 

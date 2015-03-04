@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace SimpleComputer
 {
-    static class Constants
-    {
-        public const double Pi = 3.14159;
-        public const int SpeedOfLight = 300000; // km per sec.
-
-    }
+    
     class MyMemory
     {
         int[] arrMem;
         int flags;
-
+        
         public MyMemory(int _memSize)
         {
             arrMem = new int[_memSize];
@@ -44,7 +39,8 @@ namespace SimpleComputer
             {
                 return -1; //выход за границы
             }
-            arrMem[address] = value & 0x7FFF;
+            //arrMem[address] = value & 0x7FFF;
+            arrMem[address] = value;
             return 0;
         }
 
@@ -66,11 +62,7 @@ namespace SimpleComputer
         //бинарном виде (используя функцию write или fwrite);        
         /// <summary>
         /// Saves a file
-        /// </summary>
-        /// <param name="Content">File content</param>
-        /// <param name="FileName">File name to save this as (should include directories if applicable)</param>
-        /// <param name="Append">Tells the system if you wish to append data or create a new document</param>        
-        //public static void SaveFile(byte[] Content, string FileName, bool Append)
+        /// </summary>        
         public int sc_memorySave(string fileName)
         {
             FileStream Writer = null;
@@ -175,6 +167,7 @@ namespace SimpleComputer
         public int sc_regInit()
         {
             flags = 0;
+            sc_regSet(Constants.IGNORT, 1);
             return 0;
         }
 
