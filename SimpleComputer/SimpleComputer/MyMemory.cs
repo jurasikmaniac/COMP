@@ -21,7 +21,7 @@ namespace SimpleComputer
         }
 
         //инициализирует оперативную память Simple Computer, задавая всем ее ячейкам нулевые значения.
-        private int sc_memoryInit()
+        public int sc_memoryInit()
         {
             for (int i = 0; i < arrMem.Length; i++)
             {
@@ -51,7 +51,7 @@ namespace SimpleComputer
         public int sc_memoryGet(int address, ref int value)
         {
             if (address < 0 || address >= arrMem.Length)
-            {
+            {                
                 return -1; //выход за границы
             }
             value = arrMem[address];
@@ -146,6 +146,7 @@ namespace SimpleComputer
                     }
                 }
                 Reader.Read(buff, 0, buff.Length);
+                Buffer.BlockCopy(buff, 0, arrMem, 0, buff.Length);
                 Reader.Close();
             }
             catch (Exception a)
@@ -226,7 +227,7 @@ namespace SimpleComputer
             return 0; 
         }
 
-        void SetBit(ref int dw, int nBitNumber, int nBitValue)
+        static public void SetBit(ref int dw, int nBitNumber, int nBitValue)
         {
             //dw - целое, в котором задаем бит
             //nBitNumber - номер бита, который задаем (0..31)
@@ -244,7 +245,7 @@ namespace SimpleComputer
             }
         }
 
-        int GetBit(int dw, int nBitNumber)
+        static public int GetBit(int dw, int nBitNumber)
         {
             //dw - целое в котором узнаем бит
             //nBitNumber - номер бита, который узнаем (0..31)

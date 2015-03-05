@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBoxMem = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxAcc = new System.Windows.Forms.GroupBox();
             this.textBoxAcc = new System.Windows.Forms.TextBox();
             this.groupBoxInstr = new System.Windows.Forms.GroupBox();
@@ -46,8 +45,9 @@
             this.labelFIgnorTimer = new System.Windows.Forms.Label();
             this.labelFOverFlow = new System.Windows.Forms.Label();
             this.labelFOutMemory = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,6 +58,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.buttonClearMemory = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numericUpDownClock = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxConsole = new System.Windows.Forms.TextBox();
             this.groupBoxMem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxAcc.SuspendLayout();
@@ -65,6 +71,7 @@
             this.groupBoxOp.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownClock)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMem
@@ -90,28 +97,20 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(538, 218);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(266, 433);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBoxAcc
             // 
             this.groupBoxAcc.Controls.Add(this.textBoxAcc);
             this.groupBoxAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBoxAcc.Location = new System.Drawing.Point(681, 31);
+            this.groupBoxAcc.Location = new System.Drawing.Point(740, 31);
             this.groupBoxAcc.Name = "groupBoxAcc";
             this.groupBoxAcc.Size = new System.Drawing.Size(200, 48);
             this.groupBoxAcc.TabIndex = 3;
@@ -126,14 +125,15 @@
             this.textBoxAcc.Name = "textBoxAcc";
             this.textBoxAcc.Size = new System.Drawing.Size(187, 20);
             this.textBoxAcc.TabIndex = 0;
-            this.textBoxAcc.Text = "+9999";
+            this.textBoxAcc.Text = "0";
             this.textBoxAcc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxAcc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAcc_KeyPress);
             // 
             // groupBoxInstr
             // 
             this.groupBoxInstr.Controls.Add(this.textBoxInstr);
             this.groupBoxInstr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBoxInstr.Location = new System.Drawing.Point(681, 85);
+            this.groupBoxInstr.Location = new System.Drawing.Point(740, 85);
             this.groupBoxInstr.Name = "groupBoxInstr";
             this.groupBoxInstr.Size = new System.Drawing.Size(200, 48);
             this.groupBoxInstr.TabIndex = 3;
@@ -148,8 +148,9 @@
             this.textBoxInstr.Name = "textBoxInstr";
             this.textBoxInstr.Size = new System.Drawing.Size(187, 20);
             this.textBoxInstr.TabIndex = 0;
-            this.textBoxInstr.Text = "+9999";
+            this.textBoxInstr.Text = "0";
             this.textBoxInstr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxInstr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxInstr_KeyPress);
             // 
             // groupBoxOp
             // 
@@ -157,7 +158,7 @@
             this.groupBoxOp.Controls.Add(this.labelOpVal);
             this.groupBoxOp.Controls.Add(this.labelOp);
             this.groupBoxOp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBoxOp.Location = new System.Drawing.Point(681, 139);
+            this.groupBoxOp.Location = new System.Drawing.Point(740, 139);
             this.groupBoxOp.Name = "groupBoxOp";
             this.groupBoxOp.Size = new System.Drawing.Size(200, 48);
             this.groupBoxOp.TabIndex = 3;
@@ -199,7 +200,7 @@
             this.groupBox1.Controls.Add(this.labelFOverFlow);
             this.groupBox1.Controls.Add(this.labelFOutMemory);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(681, 201);
+            this.groupBox1.Location = new System.Drawing.Point(740, 201);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 48);
             this.groupBox1.TabIndex = 4;
@@ -256,18 +257,10 @@
             this.labelFOutMemory.TabIndex = 5;
             this.labelFOutMemory.Text = "М";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Syastro", 100F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(12, 275);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(568, 155);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "+9999";
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
@@ -279,12 +272,34 @@
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(681, 255);
+            this.groupBox2.Location = new System.Drawing.Point(740, 255);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 175);
+            this.groupBox2.Size = new System.Drawing.Size(200, 204);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "acumulator";
+            this.groupBox2.Text = "Key";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(87, 171);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "compile ASM file";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(6, 171);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Copile";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -346,6 +361,7 @@
             this.button6.TabIndex = 4;
             this.button6.Text = "Reset";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -357,6 +373,7 @@
             this.button5.TabIndex = 3;
             this.button5.Text = "Step";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -368,6 +385,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "Run";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -379,6 +397,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "Save";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -390,20 +409,103 @@
             this.button2.TabIndex = 0;
             this.button2.Text = "Load";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonClearMemory
+            // 
+            this.buttonClearMemory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClearMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonClearMemory.Location = new System.Drawing.Point(12, 271);
+            this.buttonClearMemory.Name = "buttonClearMemory";
+            this.buttonClearMemory.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearMemory.TabIndex = 6;
+            this.buttonClearMemory.Text = "ClearMem";
+            this.buttonClearMemory.UseVisualStyleBackColor = true;
+            this.buttonClearMemory.Click += new System.EventHandler(this.buttonClearMemory_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(669, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(568, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(95, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Selected MemCell:";
+            // 
+            // numericUpDownClock
+            // 
+            this.numericUpDownClock.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownClock.Location = new System.Drawing.Point(740, 478);
+            this.numericUpDownClock.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownClock.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownClock.Name = "numericUpDownClock";
+            this.numericUpDownClock.Size = new System.Drawing.Size(82, 20);
+            this.numericUpDownClock.TabIndex = 9;
+            this.numericUpDownClock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownClock.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(737, 462);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Timer interval(ms):";
+            // 
+            // textBoxConsole
+            // 
+            this.textBoxConsole.Location = new System.Drawing.Point(12, 310);
+            this.textBoxConsole.Multiline = true;
+            this.textBoxConsole.Name = "textBoxConsole";
+            this.textBoxConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxConsole.Size = new System.Drawing.Size(550, 100);
+            this.textBoxConsole.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 517);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(943, 574);
+            this.Controls.Add(this.textBoxConsole);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.numericUpDownClock);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonClearMemory);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxOp);
             this.Controls.Add(this.groupBoxInstr);
             this.Controls.Add(this.groupBoxAcc);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBoxMem);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -420,6 +522,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownClock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,7 +531,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBoxMem;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBoxAcc;
         private System.Windows.Forms.GroupBox groupBoxInstr;
@@ -442,7 +544,6 @@
         private System.Windows.Forms.Label labelFOutMemory;
         private System.Windows.Forms.Label labelFIgnorTimer;
         private System.Windows.Forms.Label labelFWrongOp;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxAcc;
         private System.Windows.Forms.TextBox textBoxInstr;
@@ -456,6 +557,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button buttonClearMemory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericUpDownClock;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxConsole;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
 
     }
 }

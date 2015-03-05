@@ -1,0 +1,9 @@
+D:\REPS\COMP\SimpleComputer\SimpleComputer\bin\Release\SimpleComputer.exe.config
+D:\REPS\COMP\SimpleComputer\SimpleComputer\bin\Release\SimpleComputer.exe
+D:\REPS\COMP\SimpleComputer\SimpleComputer\bin\Release\SimpleComputer.pdb
+D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Release\SimpleComputer.csprojResolveAssemblyReference.cache
+D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Release\SimpleComputer.Form1.resources
+D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Release\SimpleComputer.Properties.Resources.resources
+D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Release\SimpleComputer.csproj.GenerateResource.Cache
+D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Release\SimpleComputer.exe
+D:\REPS\COMP\SimpleComputer\SimpleComputer\obj\Release\SimpleComputer.pdb
