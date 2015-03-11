@@ -206,6 +206,12 @@ namespace SimpleComputer
                         memory.sc_regSet(Constants.OUTM, 1);
                         return -1;
                     }
+                    if (temp==0)
+                    {
+                        memory.sc_regSet(Constants.IGNORT, 1);
+                        memory.sc_regSet(Constants.ZERO, 1);
+                        return -1;
+                    }
                     accumulator = accumulator / temp;
                     if (accumulator > 32767 || accumulator < -16385)
                     {
